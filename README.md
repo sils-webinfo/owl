@@ -20,3 +20,8 @@ Run `make` to generate:
 * `all.html` which contains all the original triples in `dogs.ttl`
   plus the new triples inferred.
 
+Run `make danes` to list instances of [`ex:Dane`](ontology.ttl#L47-L66).
+
+Run `make lagottos` to list instances of [`ex:LagottoRomagnolo`](ontology.ttl#L77-L101).
+
+
