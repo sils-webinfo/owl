@@ -11,6 +11,7 @@ clean:
 
 superclean: clean
 	$(MAKE) -s -C tools/eye clean
+	$(MAKE) -s -C tools/jena clean
 
 lagottos: all.ttl queries/lagottos.rq | tools/jena/bin/arq
 	./tools/jena/bin/arq --data $< --query $(word 2,$^)
