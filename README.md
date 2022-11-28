@@ -9,7 +9,7 @@ for the properties and classes used in the dogs dataset. It also
 defines some new classes that will allow us to infer which dogs are
 Danes and which dogs are Lagotto Romagnolos.
 
-The [`rules`][rules/] directory contains logic rules used to implement
+The [`rules`](rules) directory contains logic rules used to implement
 OWL+RDFS reasoning. We're only using the specific rules needed to make
 the inferences we want to make.
 
