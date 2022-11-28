@@ -2,7 +2,7 @@ SHELL := /usr/bin/env bash
 RULES := $(shell find rules -name '*.n3')
 STYLE ?= fineblue
 
-.PHONY: all clean superclean
+.PHONY: all clean superclean lagottos danes
 
 all: all.ttl
 
@@ -12,11 +12,18 @@ clean:
 superclean: clean
 	$(MAKE) -s -C tools/eye clean
 
+lagottos: all.ttl queries/lagottos.rq | tools/jena/bin/arq
+	./tools/jena/bin/arq --data $< --query $(word 2,$^)
+
+danes: all.ttl queries/danes.rq | tools/jena/bin/arq
+	./tools/jena/bin/arq --data $< --query $(word 2,$^)
+
 tools/eye/bin/eye:
 	which swipl || \
 	(sudo apt update && sudo apt -y install swi-prolog)
 	$(MAKE) -s -C tools/eye
 
+tools/jena/bin/arq \
 tools/jena/bin/riot:
 	which java || \
 	(sudo apt update && sudo apt -y install default-jre)
