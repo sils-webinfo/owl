@@ -1,0 +1,6 @@
+inferred.ttl
+all.ttl
+tools/eye/*
+!tools/eye/Makefile
+tools/jena/*
+!tools/jena/Makefile

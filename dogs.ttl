@@ -1,0 +1,153 @@
+PREFIX ex: <http://example.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+ex:louie a ex:Dog ;
+  rdfs:label "Louie" ;
+  ex:sex ex:female ;
+  ex:mother ex:puddles ;
+  ex:father ex:tito ;
+  ex:color ex:orange , ex:white ;
+  ex:birthdate "2022-08-11"^^xsd:date ;
+  .
+
+ex:tito a ex:Dog ;
+  rdfs:label "Il Granaio dei Malatesta Negroni Sbagliato" ;
+  ex:sex ex:male ;
+  ex:father ex:dalmazio ;
+  ex:mother ex:elisa ;
+    ex:weight [
+    rdf:value 15 ;
+    ex:unit ex:kilogram
+  ] ;
+  ex:color ex:brown ;
+  ex:birthdate "2015-04-23"^^xsd:date ;
+  .
+
+ex:olly a ex:Dog ;
+  rdfs:label "II Granaio Dei Malatesta New Orleans" ;
+  ex:father ex:dalmazio ;
+  ex:mother ex:elisa ;
+  ex:birthplace ex:italy ;
+  ex:color ex:brown ;
+  ex:birthdate "2015-04-23"^^xsd:date ;
+  .
+
+ex:harley a ex:Dog ;
+  rdfs:label "Solipse Elegante Eloisa" ;
+  ex:father ex:olly ;
+  ex:mother ex:lisa ;
+  ex:color ex:brown ;
+  ex:birthdate "2022-06-06"^^xsd:date ;
+  ex:birthplace ex:slovakia ;
+  .
+
+ex:lisa a ex:Dog ;
+  rdfs:label "Dolce Vita Lisa ze Sulicke tvrze" ;
+  ex:birthplace ex:czechrepublic ;
+  ex:birthdate "2016-08-12"^^xsd:date
+  .
+
+ex:puddles a ex:Dog ;
+  rdfs:label "Puddles" ;
+  ex:sex ex:female ;
+  .
+
+ex:dalmazio a ex:Dog ;
+  rdfs:label "II Granaio dei Malatesta Dalmazio" ;
+  ex:father ex:gualdarie ;
+  ex:mother ex:malu ;
+  .
+
+ex:gus a ex:Dog ;
+  rdfs:label "Ancient City Caffe Corretto" ;
+  ex:father ex:tito ;
+  ex:birthplace ex:usa ;
+  ex:color ex:brown ;
+  ex:birthdate "2021-10-27"^^xsd:date ;
+  ex:weight [
+    rdf:value 14.51 ;
+    ex:unit ex:kilogram
+  ] ;
+  .
+
+ex:demetrio a ex:Dog ;
+  rdfs:label "II Granaio dei Malatesta Demetrio" ;
+  ex:father ex:gualdarie ;
+  ex:mother ex:malu ;
+  ex:birthplace ex:italy ;
+  .
+
+ex:rigo a ex:Dog ;
+  rdfs:label "Isso di Villa dei Gruccioni" ;
+  ex:birthdate "2019-10-24"^^xsd:date ;
+  ex:color ex:brown , ex:white ;
+  ex:birthplace ex:italy ;
+  ex:father ex:demetrio ;
+  ex:mother ex:clotilde ;
+  .
+
+ex:clotilde a ex:Dog ;
+  rdfs:label "Clotilde Di Villa Dei Gruccioni" ;
+  ex:color ex:brown ;
+  ex:birthdate "2017-11-22"^^xsd:date ;
+  .
+
+ex:gualdarie a ex:Dog ;
+  rdfs:label "Dante delle Gualdarie" ;
+  ex:breed ex:lagotto ;
+  ex:color ex:brown , ex:white ;
+  ex:birthdate "2010-01-22"^^xsd:date ;
+  ex:birthplace ex:sanmarino ;
+  .
+
+ex:malu a ex:Dog ;
+  rdfs:label "Yduns Blue’s Malu" ;
+  ex:breed ex:lagotto ;
+  ex:birthplace ex:denmark ;
+  ex:color ex:brown ;
+  ex:birthdate "2008-05-04"^^xsd:date ;
+  ex:weight [
+    rdf:value 12 ;
+    ex:unit ex:kilogram
+  ] ;
+  .
+
+ex:elisa a ex:Dog ;
+  rdfs:label "II Granaio Dei Malatesta Elisa" ;
+  ex:weight [
+    rdf:value 12 ;
+    ex:unit ex:kilogram
+  ] ;
+  ex:birthplace ex:italy ;
+  ex:color ex:brown , ex:white ;
+  .
+
+ex:lagotto a ex:Breed ;
+  rdfs:label "Lagotto Romagnolo" ;
+  .
+
+ex:denmark a ex:Country ;
+  rdfs:label "Denmark" ;
+  .
+
+ex:sanmarino a ex:Country ;
+  rdfs:label "San Marino" ;
+  .
+
+ex:italy a ex:Country ;
+  rdfs:label "Italy" ;
+  .
+
+ex:czechrepublic a ex:Country ;
+  rdfs:label "Czech Republic" ;
+  .
+
+ex:slovakia a ex:Country ;
+  rdfs:label "Slovakia" ;
+  .
+
+ex:usa a ex:Country ;
+  rdfs:label "United States" ;
+  .

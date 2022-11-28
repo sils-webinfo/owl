@@ -1,0 +1,119 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://example.org/>
+
+# PROPERTIES
+
+# If you are my mother, then you are my parent.
+ex:mother a owl:ObjectProperty ;
+  rdfs:subPropertyOf ex:parent ;
+  .
+
+# If you are my father, then you are my parent.
+ex:father a owl:ObjectProperty ;
+  rdfs:subPropertyOf ex:parent ;
+  .
+
+# If you are my parent, then you are my ancestor.
+ex:parent a owl:ObjectProperty ;
+  rdfs:subPropertyOf ex:ancestor ;
+  .
+
+# If you are my ancestor, then your ancestors are also my ancestors.
+ex:ancestor a owl:TransitiveProperty ;
+  .
+
+# Things are born in countries.
+ex:birthplace a owl:ObjectProperty , owl:FunctionalProperty ;
+  rdfs:range ex:Country ;
+  .
+
+# Dogs have breeds.
+ex:breed a owl:ObjectProperty ;
+  rdfs:domain ex:Dog ;
+  rdfs:range ex:Breed ;
+  .
+
+# CLASSES
+
+ex:Dog a owl:Class .
+ex:Breed a owl:Class .
+ex:Country a owl:Class .
+
+# Things that are Danes.
+ex:Dane a owl:Class .
+
+# Things born in Denmark.
+ex:BirthplaceIsDenmark a owl:Restriction ;
+  owl:onProperty ex:birthplace ;
+  owl:hasValue ex:denmark ;
+  .
+
+# Things with at least one ancestor who is a Dane.
+ex:HasADaneAncestor a owl:Restriction ;
+  owl:onProperty ex:ancestor ;
+  owl:someValuesFrom ex:Dane ;
+  .
+
+# If something was born in Denmark, then it is a Dane.
+ex:BirthplaceIsDenmark rdfs:subClassOf ex:Dane .
+
+# If something has an ancestor who is a Dane, then it is a Dane too.
+ex:HasADaneAncestor rdfs:subClassOf ex:Dane .
+
+# Things with exactly two parents.
+ex:HasExactlyTwoParents a owl:Restriction ;
+  owl:onProperty ex:parent ;
+  owl:cardinality 2 ;
+  .
+
+# Dogs have exactly two parents.
+ex:Dog rdfs:subClassOf ex:HasExactlyTwoParents .
+
+# Note that this is *not* the same thing as ex:lagotto.
+# ex:lagotto is an individual instance of the class ex:Breed.
+# ex:LagottoRomagnolo is a class, instances of which are individual dogs.
+ex:LagottoRomagnolo a owl:Class ;
+  # All Lagotto Romagnolos are dogs.
+  rdfs:subClassOf ex:Dog ;
+  .
+
+# Dogs with ex:lagotto as the value of their ex:breed property.
+ex:BreedIsLagotto a owl:Restriction ;
+  owl:onProperty ex:breed ;
+  owl:hasValue ex:lagotto ;
+  .
+
+# If and only if a dog has the breed ex:lagotto, then it is a Lagotto Romagnolo.
+ex:BreedIsLagotto owl:equivalentClass ex:LagottoRomagnolo .
+
+# Things whose parents are all Lagotto Romagnolos.
+ex:AllParentsAreLagottos a owl:Restriction ;
+  owl:onProperty ex:parent ;
+  owl:allValuesFrom ex:LagottoRomagnolo ;
+  .
+
+# If and only if all of something's parents are Lagotto Romagnolos, then it is a Lagotto Romagnolo too.
+ex:AllParentsAreLagottos owl:equivalentClass ex:LagottoRomagnolo .
+
+# All the dogs mentioned are different individuals.
+ex:DistinctDogs a owl:AllDifferent ;
+  owl:distinctMembers (
+    ex:louie
+    ex:tito
+    ex:olly
+    ex:harley
+    ex:lisa
+    ex:puddles
+    ex:dalmazio
+    ex:gus
+    ex:demetrio
+    ex:rigo
+    ex:clotilde
+    ex:gualdarie
+    ex:malu
+    ex:elisa
+  ) ;
+  .
