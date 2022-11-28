@@ -4,6 +4,8 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX ex: <http://example.org/>
 
+<> a owl:Ontology .
+
 # PROPERTIES
 
 # If you are my mother, then you are my parent.
