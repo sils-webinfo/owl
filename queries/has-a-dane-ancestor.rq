@@ -1,0 +1,12 @@
+PREFIX ex: <http://example.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?dog ?name (GROUP_CONCAT(?parent_name ; separator=", ") AS ?parents)
+WHERE {
+  ?dog a ex:HasADaneAncestor ; rdfs:label ?name .
+  OPTIONAL {
+    ?dog ex:parent ?parent .
+    ?parent rdfs:label ?parent_name .
+  }
+}
+GROUP BY ?dog ?name

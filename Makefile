@@ -2,7 +2,9 @@ SHELL := /usr/bin/env bash
 RULES := $(shell find rules -name '*.n3')
 STYLE ?= fineblue
 
-.PHONY: all clean superclean lagottos danes
+.PHONY: \
+all clean superclean \
+lagottos danes birthplace-is-denmark has-a-dane-ancestor
 
 all: all.ttl
 
@@ -17,6 +19,14 @@ lagottos: all.ttl queries/lagottos.rq | tools/jena/bin/arq
 	./tools/jena/bin/arq --data $< --query $(word 2,$^)
 
 danes: all.ttl queries/danes.rq | tools/jena/bin/arq
+	./tools/jena/bin/arq --data $< --query $(word 2,$^)
+
+birthplace-is-denmark: \
+all.ttl queries/birthplace-is-denmark.rq | tools/jena/bin/arq
+	./tools/jena/bin/arq --data $< --query $(word 2,$^)
+
+has-a-dane-ancestor: \
+all.ttl queries/has-a-dane-ancestor.rq | tools/jena/bin/arq
 	./tools/jena/bin/arq --data $< --query $(word 2,$^)
 
 tools/eye/bin/eye:
