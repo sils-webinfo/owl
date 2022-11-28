@@ -38,8 +38,4 @@ $(RULES) ontology.ttl dogs.ttl \
 
 all.ttl: ontology.ttl dogs.ttl inferred.ttl | tools/jena/bin/riot
 	./tools/jena/bin/riot --formatted=ttl $^ \
-	| tee $@ \
-	| highlight \
-	--syntax-by-name=ttl \
-	--style=$(STYLE) \
-	--out-format=xterm256
+	> $@
