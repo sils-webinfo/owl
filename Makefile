@@ -20,7 +20,11 @@ danes: all.ttl queries/danes.rq | tools/jena/bin/arq
 
 tools/eye/bin/eye:
 	which swipl || \
-	(sudo apt update && sudo apt -y install swi-prolog)
+	(sudo apt update \
+	&& sudo apt -y install software-properties-common \
+	&& sudo apt-add-repository -y ppa:swi-prolog/stable \
+	&& sudo apt update \
+	&& sudo apt -y install swi-prolog)
 	$(MAKE) -s -C tools/eye
 
 tools/jena/bin/arq \
