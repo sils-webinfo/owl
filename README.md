@@ -17,7 +17,7 @@ Run `make` to generate:
 
 * `inferred.ttl` which contains new triples inferred on the basis of
   the dataset, the ontology, and the rules.
-* `all.html` which contains all the original triples in `dogs.ttl`
+* `all.ttl` which contains all the original triples in `dogs.ttl`
   plus the new triples inferred.
 
 Run `make danes` to list instances of [`ex:Dane`](ontology.ttl#L47-L66).
