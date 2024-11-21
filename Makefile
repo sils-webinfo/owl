@@ -1,6 +1,5 @@
 SHELL := /usr/bin/env bash
 RULES := $(shell find rules -name '*.n3')
-STYLE ?= fineblue
 
 .PHONY: \
 all clean superclean \
@@ -30,18 +29,10 @@ all.ttl queries/has-a-dane-ancestor.rq | tools/jena/bin/arq
 	./tools/jena/bin/arq --data $< --query $(word 2,$^)
 
 tools/eye/bin/eye:
-	which swipl || \
-	(sudo apt update \
-	&& sudo apt -y install software-properties-common \
-	&& sudo apt-add-repository -y ppa:swi-prolog/stable \
-	&& sudo apt update \
-	&& sudo apt -y install swi-prolog)
 	$(MAKE) -s -C tools/eye
 
 tools/jena/bin/arq \
 tools/jena/bin/riot:
-	which java || \
-	(sudo apt update && sudo apt -y install default-jre)
 	$(MAKE) -s -C tools/jena
 
 inferred.ttl: \
